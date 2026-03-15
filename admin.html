@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel – Govt. Sr. Sec. School Sangat Mandi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOGIN SECTION ===================== -->
+<div id="loginSection">
+  <div class="admin-login-wrap">
+    <div class="admin-login-box">
+      <div class="admin-logo">
+        <div class="emblem">🏫</div>
+        <h2>Admin Login</h2>
+        <p>Government Sr. Sec. School, Sangat Mandi</p>
+      </div>
+      <form id="adminLoginForm" novalidate>
+        <div class="form-group" style="margin-bottom:18px;">
+          <label>Username <span class="required">*</span></label>
+          <input type="text" class="form-control" id="adminUser" placeholder="Enter admin username" required autocomplete="username">
+        </div>
+        <div class="form-group" style="margin-bottom:24px;">
+          <label>Password <span class="required">*</span></label>
+          <input type="password" class="form-control" id="adminPass" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-blue" style="width:100%;justify-content:center;">🔓 Login to Admin Panel</button>
+        <div style="margin-top:18px;text-align:center;">
+          <p style="font-size:0.78rem;color:var(--text-muted);margin:0;">Demo credentials: <strong>admin</strong> / <strong>school@2024</strong></p>
+        </div>
+      </form>
+      <div style="margin-top:28px;border-top:1px solid var(--mid-grey);padding-top:20px;text-align:center;">
+        <a href="index.html" style="color:var(--primary);font-size:0.85rem;font-weight:600;">← Back to School Website</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DASHBOARD SECTION ===================== -->
+<div id="dashboardSection" class="hidden">
+  <!-- Admin Header -->
+  <div style="background:var(--primary-dark);color:white;padding:0;">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🏫</div>
+          <div>
+            <div style="font-weight:700;font-size:1rem;">Admin Dashboard</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Govt. Sr. Sec. School, Sangat Mandi</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <span style="font-size:0.82rem;color:rgba(255,255,255,0.7);">👤 Administrator</span>
+          <a href="index.html" class="btn btn-outline btn-sm">🏠 School Site</a>
+          <button onclick="document.getElementById('dashboardSection').classList.add('hidden');document.getElementById('loginSection').classList.remove('hidden');" class="btn btn-sm" style="background:#dc2626;color:white;border-color:#dc2626;">🔒 Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Admin Nav -->
+  <div style="background:var(--primary);padding:0;">
+    <div class="container">
+      <div style="display:flex;gap:0;flex-wrap:wrap;">
+        <a href="#" style="padding:12px 20px;color:rgba(255,255,255,0.88);font-size:0.85rem;font-weight:600;border-bottom:3px solid var(--accent);">📋 Admission Requests</a>
+        <a href="#" style="padding:12px 20px;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;">📢 Notices</a>
+        <a href="#" style="padding:12px 20px;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;">👨‍🏫 Staff</a>
+        <a href="#" style="padding:12px 20px;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;">📊 Reports</a>
+        <a href="#" style="padding:12px 20px;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;">⚙️ Settings</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-dashboard">
+    <div class="container">
+      <!-- Welcome Bar -->
+      <div style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;border-radius:12px;padding:24px 28px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+        <div>
+          <h2 style="color:white;margin-bottom:4px;font-size:1.4rem;">Welcome, Administrator 👋</h2>
+          <p style="color:rgba(255,255,255,0.8);margin:0;font-size:0.88rem;">Govt. Sr. Sec. School, Sangat Mandi | Academic Year 2025–26</p>
+        </div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);" id="adminDateTime"></div>
+      </div>
+
+      <!-- STATS -->
+      <div class="dashboard-grid">
+        <div class="dash-stat">
+          <div class="dash-icon">📋</div>
+          <div class="dash-info"><div class="num">12</div><div class="lbl">Total Admission Requests</div></div>
+        </div>
+        <div class="dash-stat green">
+          <div class="dash-icon">✅</div>
+          <div class="dash-info"><div class="num">4</div><div class="lbl">Approved Admissions</div></div>
+        </div>
+        <div class="dash-stat amber">
+          <div class="dash-icon">🔄</div>
+          <div class="dash-info"><div class="num">6</div><div class="lbl">Under Review</div></div>
+        </div>
+        <div class="dash-stat red">
+          <div class="dash-icon">⏳</div>
+          <div class="dash-info"><div class="num">2</div><div class="lbl">Pending Action</div></div>
+        </div>
+      </div>
+
+      <!-- ADMISSION REQUESTS TABLE -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-header">
+          <h3 style="color:white;font-size:1rem;margin:0;">📋 Admission Requests – 2025-26</h3>
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-sm" style="background:var(--accent);color:var(--primary-dark);border-color:var(--accent);">📥 Export CSV</button>
+            <button class="btn btn-sm btn-outline" style="border-color:rgba(255,255,255,0.4);">🖨️ Print</button>
+          </div>
+        </div>
+        <div style="padding:14px 18px;display:flex;gap:12px;border-bottom:1px solid var(--mid-grey);flex-wrap:wrap;">
+          <input type="text" placeholder="🔍 Search by name..." class="form-control" style="max-width:220px;padding:8px 14px;font-size:0.85rem;" oninput="filterTable(this.value)">
+          <select class="form-control" style="max-width:160px;padding:8px 12px;font-size:0.85rem;">
+            <option>All Classes</option>
+            <option>Class 6</option><option>Class 7</option><option>Class 8</option>
+            <option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option>
+          </select>
+          <select class="form-control" style="max-width:160px;padding:8px 12px;font-size:0.85rem;">
+            <option>All Status</option>
+            <option>New</option><option>Under Review</option><option>Approved</option>
+          </select>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table" id="admissionTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Father's Name</th>
+                <th>Class Applied</th>
+                <th>Mobile</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td><strong>Gurpreet Kaur</strong></td>
+                <td>Harjinder Singh</td>
+                <td>Class 9</td>
+                <td>98XXXXXXXX</td>
+                <td>02 Apr 2025</td>
+                <td><span class="status-badge status-new">New</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>002</td>
+                <td><strong>Manpreet Singh</strong></td>
+                <td>Sukhwinder Singh</td>
+                <td>Class 11 – Science</td>
+                <td>97XXXXXXXX</td>
+                <td>02 Apr 2025</td>
+                <td><span class="status-badge status-review">Under Review</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>003</td>
+                <td><strong>Simranjot Kaur</strong></td>
+                <td>Balwinder Singh</td>
+                <td>Class 6</td>
+                <td>99XXXXXXXX</td>
+                <td>01 Apr 2025</td>
+                <td><span class="status-badge status-approved">Approved</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>004</td>
+                <td><strong>Amandeep Singh</strong></td>
+                <td>Gurmail Singh</td>
+                <td>Class 10</td>
+                <td>94XXXXXXXX</td>
+                <td>31 Mar 2025</td>
+                <td><span class="status-badge status-review">Under Review</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>005</td>
+                <td><strong>Navneet Kaur</strong></td>
+                <td>Surjit Singh</td>
+                <td>Class 8</td>
+                <td>93XXXXXXXX</td>
+                <td>30 Mar 2025</td>
+                <td><span class="status-badge status-approved">Approved</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>006</td>
+                <td><strong>Rajwinder Singh</strong></td>
+                <td>Jaswant Singh</td>
+                <td>Class 12 – Arts</td>
+                <td>95XXXXXXXX</td>
+                <td>30 Mar 2025</td>
+                <td><span class="status-badge status-new">New</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>007</td>
+                <td><strong>Harleen Kaur</strong></td>
+                <td>Paramjit Singh</td>
+                <td>Class 7</td>
+                <td>96XXXXXXXX</td>
+                <td>29 Mar 2025</td>
+                <td><span class="status-badge status-approved">Approved</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+              <tr>
+                <td>008</td>
+                <td><strong>Kulwant Singh</strong></td>
+                <td>Makhan Singh</td>
+                <td>Class 11 – Commerce</td>
+                <td>92XXXXXXXX</td>
+                <td>28 Mar 2025</td>
+                <td><span class="status-badge status-review">Under Review</span></td>
+                <td><button class="btn btn-sm btn-blue" style="padding:5px 14px;border-radius:6px;font-size:0.75rem;">View</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;color:var(--text-muted);border-top:1px solid var(--mid-grey);flex-wrap:wrap;gap:8px;">
+          <span>Showing 8 of 12 records</span>
+          <div style="display:flex;gap:6px;">
+            <button class="btn btn-sm" style="padding:6px 14px;background:var(--mid-grey);color:var(--text-dark);border:none;">← Previous</button>
+            <button class="btn btn-sm btn-blue" style="padding:6px 14px;">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK ACTIONS & NOTICE BOARD -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;">
+        <div style="background:white;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#15803d,#22c55e);color:white;padding:18px 24px;"><h3 style="color:white;font-size:0.95rem;margin:0;">📢 Post New Notice</h3></div>
+          <div style="padding:24px;">
+            <div class="form-group" style="margin-bottom:14px;">
+              <label style="font-size:0.82rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;display:block;">Notice Title</label>
+              <input type="text" class="form-control" placeholder="Enter notice title...">
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label style="font-size:0.82rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;display:block;">Notice Content</label>
+              <textarea class="form-control" rows="3" placeholder="Enter notice content..."></textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+              <div class="form-group">
+                <label style="font-size:0.82rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;display:block;">Category</label>
+                <select class="form-control"><option>General</option><option>Admission</option><option>Exam</option><option>Holiday</option></select>
+              </div>
+              <div class="form-group">
+                <label style="font-size:0.82rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;display:block;">Date</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+            <button class="btn btn-blue" style="width:100%;justify-content:center;" onclick="showToast('Notice posted successfully!','success')">📢 Post Notice</button>
+          </div>
+        </div>
+        <div style="background:white;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;">
+          <div style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;padding:18px 24px;"><h3 style="color:white;font-size:0.95rem;margin:0;">⚡ Quick Actions</h3></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:12px;">
+            <button class="btn" style="background:var(--light-grey);color:var(--primary-dark);border:1px solid var(--mid-grey);justify-content:flex-start;gap:12px;width:100%;" onclick="showToast('Feature coming soon','success')">📧 Send Bulk Email to Parents</button>
+            <button class="btn" style="background:var(--light-grey);color:var(--primary-dark);border:1px solid var(--mid-grey);justify-content:flex-start;gap:12px;width:100%;" onclick="showToast('Feature coming soon','success')">📊 Generate Admission Report</button>
+            <button class="btn" style="background:var(--light-grey);color:var(--primary-dark);border:1px solid var(--mid-grey);justify-content:flex-start;gap:12px;width:100%;" onclick="showToast('Feature coming soon','success')">📋 Export Student List</button>
+            <button class="btn" style="background:var(--light-grey);color:var(--primary-dark);border:1px solid var(--mid-grey);justify-content:flex-start;gap:12px;width:100%;" onclick="showToast('Feature coming soon','success')">👨‍🏫 Manage Staff Records</button>
+            <button class="btn" style="background:var(--light-grey);color:var(--primary-dark);border:1px solid var(--mid-grey);justify-content:flex-start;gap:12px;width:100%;" onclick="showToast('Feature coming soon','success')">🗓️ Update School Calendar</button>
+            <button class="btn" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca;justify-content:flex-start;gap:12px;width:100%;" onclick="document.getElementById('dashboardSection').classList.add('hidden');document.getElementById('loginSection').classList.remove('hidden');">🔒 Logout from Admin</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Admin Footer -->
+  <div style="background:var(--primary-dark);color:rgba(255,255,255,0.5);padding:16px 0;font-size:0.78rem;text-align:center;">
+    <div class="container">
+      © 2025 Govt. Sr. Sec. School, Sangat Mandi – Admin Panel | For technical support contact: gssssangatbti@gmail.com
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Admin date/time display
+  function updateTime() {
+    const el = document.getElementById('adminDateTime');
+    if (el) {
+      const now = new Date();
+      el.innerHTML = '📅 ' + now.toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + '<br>🕐 ' + now.toLocaleTimeString('en-IN');
+    }
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  // Table filter
+  function filterTable(val) {
+    const rows = document.querySelectorAll('#admissionTable tbody tr');
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      row.style.display = text.includes(val.toLowerCase()) ? '' : 'none';
+    });
+  }
+
+  function showToast(msg, type) {
+    const existing = document.getElementById('toastNotif');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.id = 'toastNotif';
+    toast.style.cssText = `position:fixed;bottom:24px;right:24px;z-index:9999;background:${type==='success'?'#16a34a':'#dc2626'};color:white;padding:14px 24px;border-radius:10px;font-size:0.9rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.2);max-width:320px;`;
+    toast.textContent = (type==='success'?'✓ ':'✗ ') + msg;
+    document.body.appendChild(toast);
+    setTimeout(()=>{toast.style.opacity='0';toast.style.transition='opacity 0.3s';setTimeout(()=>toast.remove(),300);},3000);
+  }
+</script>
+</body>
+</html>
